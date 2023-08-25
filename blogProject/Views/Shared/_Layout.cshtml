@@ -34,21 +34,36 @@
                         </li>
 
 
-
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item ms-auto">
+
+                            if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                                </li>
+
+                            }
+
+
+
+
+                            <li class="ms-auto">
+                            <li class="nav-item ">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">
 
 
-                                    @User.FindFirst("Username").Value
+                                        @User.FindFirst("Username").Value
 
                                 </a>
                             </li>
-                            <li class="nav-item ms-auto">
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
                                     Logout
                                 </a>
+
+                            </li>
+
 
                             </li>
 
@@ -81,16 +96,13 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3" style="display: flex;
-        justify-content: center;
-        align-items: center;
-        ">
+        
             @RenderBody()
-        </main>
+        
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted " style="margin-top:9px">
+        <div class="container " style="margin-top:10px;">
             &Created by-Neşva; 2023 - Blog Project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

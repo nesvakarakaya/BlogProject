@@ -1,9 +1,11 @@
 ﻿using blogProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace blogProject.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,7 +20,14 @@ namespace blogProject.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult AccesDenied()
         {
             return View();
         }

@@ -23,5 +23,10 @@ namespace blogProject.Entities
         public DateTime CreateAt { get; set; } = DateTime.Now;
 
 
+        [Required]
+        [StringLength(50)]
+        public string Role { get; set; } = "user";
+
+
     }
 }

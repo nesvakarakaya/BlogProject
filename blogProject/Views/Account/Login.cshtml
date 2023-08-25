@@ -4,26 +4,29 @@
 }
 
 
-<form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
-    <div class="mb-3">
-        <label asp-for="Username" for="exampleInputUsername" class="form-label label-login">Username</label>
+<main role="main" class="pb-3" style="display: flex; justify-content: center; align-items: center;  " >
 
-        <input asp-for="Username" class="form-control" id="exampleInputUsername">
-        <span asp-validation-for="Username" class="text-danger small"></span>
-        <div class="form-text">We'll never share your username with anyone else.</div>
+    <form method="post" >
+        <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+        <div class="mb-3">
+            <label asp-for="Username" for="exampleInputUsername" class="form-label label-login">Username</label>
 
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" asp-for="Password" class="form-label ">Password</label>
-        <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
-        <span asp-validation-for="Password" class="text-danger small"></span>
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary"> Login</button>
+            <input asp-for="Username" class="form-control" id="exampleInputUsername">
+            <span asp-validation-for="Username" class="text-danger small"></span>
+            <div class="form-text">We'll never share your username with anyone else.</div>
 
-</form>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" asp-for="Password" class="form-label ">Password</label>
+            <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+            <span asp-validation-for="Password" class="text-danger small"></span>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary"> Login</button>
 
+    </form>
+
+    </main>

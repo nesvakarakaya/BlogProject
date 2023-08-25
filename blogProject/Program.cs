@@ -26,7 +26,7 @@ namespace blogProject
                 opts.SlidingExpiration = false;
                 opts.LoginPath = "/Account/Login";
                 opts.LogoutPath= "/Account/Logput";
-                opts.AccessDeniedPath = "/Home/AccessDanied";
+                opts.AccessDeniedPath = "/Home/AccessDenied";
 
             }
             );
