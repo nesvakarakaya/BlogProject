@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sunny Blog</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BLOG PAGE</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,29 +32,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
-
                         @if (User.Identity.IsAuthenticated)
                         {
-
                             if (User.IsInRole("Admin"))
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                               
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" asp-controller="Admin" asp-action="Index" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Admin Panel
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">User</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    
+
+                                    </ul>
                                 </li>
 
+
+
+
+
+
                             }
-
-
-
-
                             <li class="ms-auto">
                             <li class="nav-item ">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">
-
-
-                                        @User.FindFirst("Username").Value
-
+                                    @User.FindFirst("Username").Value
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -96,9 +101,9 @@
         </nav>
     </header>
     <div class="container">
-        
-            @RenderBody()
-        
+
+        @RenderBody()
+
     </div>
 
     <footer class="border-top footer text-muted " style="margin-top:9px">
@@ -109,6 +114,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

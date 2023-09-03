@@ -22,10 +22,12 @@ namespace blogProject.Entities
         public bool Locked { get; set; }
         public DateTime CreateAt { get; set; } = DateTime.Now;
 
-
         [Required]
         [StringLength(50)]
         public string Role { get; set; } = "user";
+
+        [StringLength(255)]
+        public string? ProfileImageFileName { get; set; } = "no-image.jpg";
 
 
     }

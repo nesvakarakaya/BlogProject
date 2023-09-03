@@ -140,6 +140,7 @@ namespace blogProject.Controllers
             User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userId);
 
             ViewData["FullName"] = user.FullName;
+            ViewData["ProfileImage"] = user.ProfileImageFileName;
         }
 
         [HttpPost]
@@ -184,6 +185,35 @@ namespace blogProject.Controllers
             ProfileInfoLoader();
             return View("Profile");
         }
+
+
+        [HttpPost]
+        public IActionResult ProfileChangeImage([Required] IFormFile file)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                Guid userId = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userId);
+
+                string fileName = $"p_{userId}+.jpg";
+                Stream stream = new FileStream($"wwwroot/uploads/{fileName}", FileMode.OpenOrCreate);
+
+                file.CopyTo(stream);
+                stream.Close();
+                stream.Dispose();
+                user.ProfileImageFileName=fileName;
+                _databaseContext.SaveChanges();
+                return RedirectToAction(nameof(Profile));
+            }
+            ProfileInfoLoader();
+            return View("Profile");
+        }
+
+
+
+
 
     }
 }
