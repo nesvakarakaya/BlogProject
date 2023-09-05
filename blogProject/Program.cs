@@ -1,6 +1,7 @@
 using blogProject.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace blogProject
 {
@@ -12,6 +13,7 @@ namespace blogProject
 
             // Add services to the container.
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
             builder.Services.AddDbContext<DatabaseContext>(opts => { opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             }
             

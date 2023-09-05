@@ -1,0 +1,56 @@
+﻿@model CreateUserViewModel
+@{
+    ViewData["Title"] = "New User";
+}
+
+
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">New User</h3>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
+    <form method="post">
+
+        <div class="card-body">
+            <div class="form-group">
+                <label class="form-label">UserName</label>
+                <input type="text" asp-for="Username" class="form-control"  placeholder="Username">
+                <span asp-validation-for="Username" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label">FullName</label>
+                <input type="text" asp-for="FullName" class="form-control" placeholder="FullName">
+                <span asp-validation-for="FullName" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleSelectBorderWidth2">Re-Password</label>
+                <input type="password" asp-for="RePassword" class="form-control" placeholder="Re-Password">
+                <span asp-validation-for="RePassword" class="text-danger small"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-3">Select Role </label>
+
+                <select class="custom-select form-control-border border-width-2" asp-for="Role">
+                    <option>Admin</option>
+                    <option>User</option>
+
+                </select>
+                <span asp-validation-for="Role" class="text-danger small"></span>
+            </div>
+            <div class="form-check mt-3">
+                <input type="checkbox" asp-for="Locked" class="form-check-input ">
+                <label class="form-check-label">Locked</label>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

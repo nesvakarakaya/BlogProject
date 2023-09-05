@@ -1,5 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model  List<UserViewModel>
+
 @{
+    ViewData["Title"] = "Users ";
 }
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">@(ViewData["Title"])</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <a class="btn btn-primary "asp-action="CreateUser">New User</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>FullName</th>
+                            <th>User Name</th>
+                            <th>Locked </th>
+                            <th>Create At</th>
+                            <th>Role</th>
+                            <th >Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (UserViewModel user in Model)
+                        {
+                            <tr>
+                                <td>@user.FullName
+                              </td>
+                                <td>@user.UserName</td>
+                                <td>@if (user.Locked)
+                                {
+                                    <label>
+                                        True
+                                    </label>
+                                }
+                                else
+                                {
+                                <label>
+                                    False
+                                </label>
+                                }
+
+
+                                </td>
+                                <td>@user.CreateAt</td>
+                                <td>@user.Role</td>                              
+                                <td>
+                                    <a asp-action="EditUser" asp-route-id="user.Id" class="btn btn-success">
+                                        Edit User
+                                    </a>
+                                    <a  asp-action="Delete" asp-route-id="user.Id" class="btn btn-danger">
+                                        Delete User
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
