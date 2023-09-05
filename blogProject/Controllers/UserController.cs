@@ -79,5 +79,23 @@ namespace blogProject.Controllers
             return View(model);
         }
 
+
+
+
+        [HttpGet]
+        public IActionResult DeleteUser(Guid id)
+        {
+            User user = _databaseContext.Users.Find(id);
+
+            if (user.Id!=null)
+            {
+
+                _databaseContext.Users.Remove(user); 
+                _databaseContext.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("Index");
+        }
     }
 }
